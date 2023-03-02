@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
-app.config['AQLALCHEMY_DATABASE_URI']='postgresql://postgres:pasword@localhost/students'
+app.config['SQLALCHEMY_DATABASE_URI']='postgresql://postgres:intecol.123@localhost/students'
 
 db=SQLAlchemy(app)
 
@@ -18,6 +18,13 @@ class Student(db.Model):
         self.fname=fname
         self.lname=lname
         self.pet=pet
+
+class Professor(db.Model):
+    __tablename__='professors'
+    id=db.Column(db.Integer, primary_key=True)
+    fname=db.Column(db.String(200))
+    lname=db.Column(db.String(200))
+    assigment=db.Column(db.String(200))
 
 
 @app.route('/')
@@ -38,7 +45,10 @@ def submit():
         studentResult=db.session.query(Student).filter(Student.id==1)
 
         for result in studentResult:
-            
+            print(result.fname)
+    return render_template('success.html', data=fname)
 
+ctx = app.app_context()
+ctx.push()
 if __name__=='__main__':
     app.run(debug=True)
