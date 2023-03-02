@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
-        <title>Hello world</title>
-    </head>
+{% extends 'base.html' %}
+{% block content %}
     <body>
-        <p>Welcome to flask</p>
+        <img src="/static/header.png" alt="header" width="1150" height="150"><br><br>\
+        <form action="/submit" method="POST">
+            <label for="fname">First Name</label><br>
+            <input type="text" id="fname" name="fname"><br><br>
+            <label for="lname">Last Name</label><br>
+            <input type="text" id="lname" name="lname"><br><br>
+
+            <label for="pets">Choose your pet:</label>
+            <select name="pets" id="pets"
+        </form>
     </body>
-</html>
+{% endblock %}
