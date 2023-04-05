@@ -48,6 +48,8 @@ def submit():
             print(result.fname)
     return render_template('success.html', data=fname)
 
+
+
 ctx = app.app_context()
 ctx.push()
 if __name__=='__main__':
